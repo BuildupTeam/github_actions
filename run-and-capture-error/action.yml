@@ -1,0 +1,15 @@
+name: 'Run and Capture Error'
+description: 'Run a command and capture any errors'
+inputs:
+  command:
+    description: 'The command to run'
+    required: true
+  step-name:
+    description: 'Name of the step for logging purposes'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - run: |
+        ${{ inputs.command }} 2>> errors.txt || echo "Step failed: [${{ inputs.step-name }}]" >> errors.txt
+      shell: bash
