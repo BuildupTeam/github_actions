@@ -1,5 +1,5 @@
 name: 'Run and Capture Error'
-description: 'Run a command and capture any errors'
+description: 'Run a command and capture any errors with specified log file path'
 inputs:
   command:
     description: 'The command to run'
@@ -7,9 +7,13 @@ inputs:
   step-name:
     description: 'Name of the step for logging purposes'
     required: true
+  error-log-path:
+    description: 'Absolute path to the error log file'
+    required: true
+    default: 'errors.txt'
 runs:
   using: 'composite'
   steps:
     - run: |
-        ${{ inputs.command }} 2>> errors.txt || echo "Step failed: [${{ inputs.step-name }}]" >> errors.txt
+        ${{ inputs.command }} 2>> ${{ inputs.error-log-path }} || echo "Step failed: [${{ inputs.step-name }}]" >> ${{ inputs.error-log-path }}
       shell: bash
