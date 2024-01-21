@@ -16,4 +16,6 @@ runs:
   steps:
     - run: |
         ${{ inputs.command }} 2>> ${{ inputs.error-log-path }} || echo "Step failed: [${{ inputs.step-name }}]" >> ${{ inputs.error-log-path }}
+        cat ${{ inputs.error-log-path }}
+        echo ${{ inputs.command }}
       shell: bash
