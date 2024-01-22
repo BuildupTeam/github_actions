@@ -17,5 +17,12 @@ runs:
     - run: |
         echo " ${{ inputs.command }} - ${{ inputs.error-log-path }} - ${{ inputs.step-name }} "
         dsadasdasd ?>> ${{ inputs.error-log-path }}
-    
+#        ${{ inputs.command }} 2>> ${{ inputs.error-log-path }} || echo "Step failed: [${{ inputs.step-name }}]" >> ${{ inputs.error-log-path }}
       shell: bash
+
+    - name: Display errorssss.txt contents
+      if: failure()
+      run: |
+        ls ${{ github.workspace }}
+        echo "Contents of errors.txt:"
+        cat ${{ inputs.error-log-path }}
