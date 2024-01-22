@@ -15,7 +15,7 @@ runs:
   using: 'composite'
   steps:
     - run: |
-        echo " ${{ inputs.command }} - ${{ inputs.error-log-path }} - ${{ inputs.step-name }} 
+#        echo " ${{ inputs.command }} - ${{ inputs.error-log-path }} - ${{ inputs.step-name }} 
         dsadasdasd ?>> ${{ inputs.error-log-path }}
-        # ${{ inputs.command }} 2>> ${{ inputs.error-log-path }} || echo "Step failed: [${{ inputs.step-name }}]" >> ${{ inputs.error-log-path }}
+#        ${{ inputs.command }} 2>> ${{ inputs.error-log-path }} || echo "Step failed: [${{ inputs.step-name }}]" >> ${{ inputs.error-log-path }}
       shell: bash
