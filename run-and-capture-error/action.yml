@@ -16,5 +16,5 @@ runs:
   steps:
     - run: |
         echo " ${{ inputs.command }} - ${{ inputs.error-log-path }} - ${{ inputs.step-name }} "
-        sudo dsadsadsa > ${{ inputs.error-log-path }} 2>&1 || echo "Step failed: [${{ inputs.step-name }}]" >> ${{ inputs.error-log-path }}
+        ${{ inputs.command }} > ${{ inputs.error-log-path }} 2>&1 || echo "Step failed: [${{ inputs.step-name }}]" >> ${{ inputs.error-log-path }}
       shell: bash
